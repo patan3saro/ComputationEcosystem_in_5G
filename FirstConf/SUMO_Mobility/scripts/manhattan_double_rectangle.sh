@@ -22,11 +22,11 @@ for (( run=0; run<${#NB_Runs[@]}; run++ ))
 do
 	for key in "${!speeds[@]}";
 	do
-		PWD_WORK=/home/saro/NS3/ns-3-dev/scratch/FirstConf/SUMO_mobility/results/RectangleScenario/$key
+		PWD_WORK=/home/saro/NS3/ns-3-dev/scratch/FirstConf/SUMO_mobility/results/DoubleRectangleScenario/$key
 		topology_filename=$PWD_WORK/manhattan_net_$NB_grid.xml
 		echo "PHASE 1 -> Generating the grid topology"
 		#### To generate a manhattan network topology
-		netgenerate --grid --grid.number $NB_grid --grid.x-length 600 --grid.y-length 50 --default.lanenumber 1 --rand.max-distance 100.0 --default.speed ${speeds[$key]}  --no-turnarounds.geometry false -o $topology_filename
+		netgenerate --grid --grid.number $NB_grid --grid.x-length 1200 --grid.y-length 50 --default.lanenumber 1 --rand.max-distance 100.0 --default.speed ${speeds[$key]}  --no-turnarounds.geometry false -o $topology_filename
 		for (( i=0; i<${#NB_Cars[@]}; i++ ))
 		do
 
