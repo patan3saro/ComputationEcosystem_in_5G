@@ -1,63 +1,59 @@
 /**
- * globals.h - Global variables and configuration for the simulation
+ * globals.cc - Implementation of global variables for the simulation
  *
- * This file defines global variables for configuration parameters,
- * addressing, computation capacities, and simulation settings
- * that are shared across different components of the simulation.
+ * This file contains the actual definitions of the global variables
+ * declared in globals.h. These variables are used for configuration,
+ * addressing, and simulation parameters across different components.
  */
 
-#ifndef NS3_GLOBALS_H
-#define NS3_GLOBALS_H
-
-#include "ns3/ipv4-address.h"
-#include <string>
+#include "globals.h"
 
 namespace ns3 {
 
-/**
- * Strategy and output configuration
- */
+//---------- Strategy and configuration ----------
 // Path for output CSV files
-extern std::string output_data_csv;
+std::string output_data_csv;
+
 // Selected offloading strategy ("Random", "VCCFirst", "EC_and_CC", "VCC_and_CC")
-extern std::string chosen_strategy;
+std::string chosen_strategy;
+
 // Simulation scenario type identifier
-extern std::string sim_type;
+std::string sim_type;
 
-/**
- * Simulation parameters
- */
+//---------- Simulation parameters ----------
 // Request generation rate in milliseconds
-extern double request_rate;
+double request_rate = 1000;
+
 // Number of vehicles in the simulation
-extern uint32_t cars_number;
+uint32_t cars_number = 0;
+
 // Number of pedestrians in the simulation
-extern uint32_t pedestrians_number;
+uint32_t pedestrians_number = 0;
+
 // Maximum queue length in vehicles
-extern uint32_t vehicle_queue_length;
+uint32_t vehicle_queue_length = 0;
+
 // Size of packets in bytes
-extern uint32_t packet_size;
+uint32_t packet_size;
+
 // Workload for each task in millions of instructions
-extern double task_workload;
+double task_workload;
 
-/**
- * Network addresses
- */
+//---------- Network addresses ----------
 // Cloud server IP address
-extern Ipv4Address cloud_ip;
-// gNodeB (Edge server) IP address
-extern Ipv4Address gNb_ip;
+Ipv4Address cloud_ip = Ipv4Address("0.0.0.0");
 
-/**
- * Computation capacities (in MIPS - Million Instructions Per Second)
- */
-// Cloud server computation capacity
-extern double cloud_computation_capacity;
-// Edge server computation capacity
-extern double edge_computation_capacity;
-// Vehicle computation capacity
-extern double car_computation_capacity;
+// gNodeB (Edge server) IP address  
+Ipv4Address gNb_ip = Ipv4Address("0.0.0.0");
+
+//---------- Computation capacities ----------
+// Cloud server computation capacity (in MIPS)
+double cloud_computation_capacity = 80000;
+
+// Edge server computation capacity (in MIPS)
+double edge_computation_capacity = 27650;
+
+// Vehicle computation capacity (in MIPS)
+double car_computation_capacity = 1925;
 
 } // namespace ns3
-
-#endif // NS3_GLOBALS_H
